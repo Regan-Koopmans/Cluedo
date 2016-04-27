@@ -5,3 +5,28 @@ function rollDice()
     die1.innerHTML = Math.ceil(Math.random() * 5);
     die2.innerHTML = Math.ceil(Math.random() * 5);
 }
+
+function playerInputs()
+{
+
+    var characters = ["Miss Scarlet","Colonel Mustard","Mrs. White","Mr. Green","Mrs Peacock","Professor Plum"];
+    var numPlayers = document.getElementById("numPlayers");
+    var html = "";
+    for (x = 0; x < numPlayers.value; x++)
+    {
+        html += "<label for=player"+(x+1)+"_ID>Player " + (x+1) + " Name:</label>";
+        html += "<input class='form-control' id='player"+ (x+1) +"_ID' type='text' />";
+        html += "<br/>";
+        html += "<select class='form-control' name='character'>";
+
+        for (y = 0; y < characters.length; y++)
+        {
+            html += "<option>";
+            html += characters[y];
+            html += "</option>";
+        }
+
+        html += "</select><br>";
+    }
+    document.getElementById("players_login").innerHTML = html;
+}
