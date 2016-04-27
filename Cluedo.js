@@ -17,7 +17,7 @@ function playerInputs()
         html += "<label for=player"+(x+1)+"_ID>Player " + (x+1) + " Name:</label>";
         html += "<input class='form-control' name='player"+ (x+1) +"_ID' type='text' />";
         html += "<br/>";
-        html += "<select class='form-control' name='character'>";
+        html += "<select class='form-control character-select' onclick='checkCharacters()' onblur='checkCharacters()' name='character'>";
 
         for (y = 0; y < characters.length; y++)
         {
@@ -25,10 +25,34 @@ function playerInputs()
             html += characters[y];
             html += "</option>";
         }
-
         html += "</select><br>";
-        //html += "<br>";
     }
-    html += "<div align='center'> <input type='submit' value='Start' class='btn btn-default'>Start</input> </div>";
+    html += "<div align='center'> <input type='submit' id='submit-button' value='Start' class='btn btn-default'>Start</input> </div>";
     document.getElementById("players_login").innerHTML = html;
+    checkCharacters();
+}
+
+function checkCharacters()
+{
+    var inputs = document.getElementsByClassName("character-select");
+    var currentInput;
+    for (x = 0; x < inputs.length; x++)
+    {
+        for (y = 0; y < inputs.length; y++)
+        {
+            if (x != y)
+            {
+                if (inputs[x].value == inputs[y].value)
+                {
+                    document.getElementById('submit-button').type='button';
+                    inputs[y].style = 'background-color:lightcoral';
+                }
+                else
+                {
+                    document.getElementById('submit-button').type='submit';
+                    inputs[y].style = 'background-color:white';
+                }
+            }
+        }
+    }
 }

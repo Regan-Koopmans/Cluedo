@@ -1,6 +1,5 @@
-<?php
-    session_start();
-?>
+<?php session_start(); ?>
+
 <html>
 <?php
         $lines = file("gameBuffer.txt",FILE_IGNORE_NEW_LINES);
@@ -36,8 +35,6 @@
         <li><a href="Players.php">View Players</a></li>
 
 <?php
-    echo "<script>alert('". $_POST['player1_ID'] ."')</script>";
-
     $weapons = ["Dagger","Rope","Revolver","Knife","Lead Pipe","Wrench","Candlestick","Horseshoe","Bat","Poison","Axe","Dumbbell","Trophy"];
     $characters = ["Miss Scarlet","Colonel Mustard","Mrs. White","Mr. Green","Mrs Peacock","Professor Plum"];
     $places = ["Library","IT Building", "Aula","Music Building","Maths Building","Biology Building","EMS Building","Tribecca"];

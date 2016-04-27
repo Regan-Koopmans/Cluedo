@@ -24,7 +24,6 @@
 	<h1 id="heading">SET<span style="color:red">U</span>P</h1>
 	<br/>
 
-
 	<div align="center">
 		<label>Number of Players : </label> <input id='numPlayers' type='number' min="1" max="6" value="1" onclick="playerInputs()" onblur="playerInputs()">
 	</div>
@@ -50,7 +49,7 @@
 
 		<br>
 		<div align="center">
-			<input type="submit" value='Start' class="btn btn-default">Start</input>
+			<input type="submit" value='Start' id='submit-button' class="btn btn-default">Start</input>
 		</div>
 	</div>
 	<br/>
