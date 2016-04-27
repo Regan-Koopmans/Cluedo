@@ -1,7 +1,6 @@
 <?php
     session_start();
 ?>
-
 <html>
 <?php
         $lines = file("gameBuffer.txt",FILE_IGNORE_NEW_LINES);
@@ -29,7 +28,7 @@
     <p style="font-size:20px" id="subheading">The <span style="color:#ffff00">Classic</span> Mystery Game<p>
 </div>
 
-<div class="btn-group">
+<div class="btn-group" style="align-content: right">
     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Go <span class="caret"></span>
     </button>
@@ -37,7 +36,7 @@
         <li><a href="Players.php">View Players</a></li>
 
 <?php
-    $weapons = ["Dagger","Rope","Revolver","Knife","Lead Pipe","Wrench","Candlestick","Horseshoe","Bat","Poison","Axe","Dumbell","Trophy"];
+    $weapons = ["Dagger","Rope","Revolver","Knife","Lead Pipe","Wrench","Candlestick","Horseshoe","Bat","Poison","Axe","Dumbbell","Trophy"];
     $characters = ["Miss Scarlet","Colonel Mustard","Mrs. White","Mr. Green","Mrs Peacock","Professor Plum"];
     $places = ["Library","IT Building", "Aula","Music Building","Maths Building","Biology Building","EMS Building","Tribecca"];
 

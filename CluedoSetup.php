@@ -15,13 +15,11 @@
     <body>
 
 	<h1 id="heading"> Setup </h1>
-
-	<br />
-
+	<br/>
 	<form action="Main.php" method="post">
 	<div class="container">
 		<label for="player1_ID">Player Name:</label>
-		<input class="form-control" id="player1_ID" type="text" />
+		<input class="form-control" id="player_ID" type="text" />
 		<br/>
 
 		<select class="form-control" name="character">
