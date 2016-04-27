@@ -27,6 +27,8 @@ function playerInputs()
         }
 
         html += "</select><br>";
+        //html += "<br>";
     }
+    html += "<div align='center'> <input type='submit' value='Start' class='btn btn-default'>Start</input> </div>";
     document.getElementById("players_login").innerHTML = html;
 }

@@ -16,11 +16,17 @@
     </head>
     <body>
 
-	<h1 id="heading"> Setup </h1>
+	<div class="page-header">
+		<h1 style="font-size:100px" id="heading">CL<span style="color:red">U</span>EDO</h1>
+		<p style="font-size:20px" id="subheading">The <span style="color:yellow">Classic</span> Mysery Game<p>
+	</div>
+
+	<h1 id="heading">SET<span style="color:red">U</span>P</h1>
 	<br/>
 
+
 	<div align="center">
-		<label>Number of Players</label> <input id='numPlayers' type='number' min="1" max="6" value="1" onclick="playerInputs()" onblur="playerInputs()">
+		<label>Number of Players : </label> <input id='numPlayers' type='number' min="1" max="6" value="1" onclick="playerInputs()" onblur="playerInputs()">
 	</div>
 
 	<form action="Main.php" method="post">
@@ -41,12 +47,14 @@
 			}
 			?>
 		</select>
+
+		<br>
+		<div align="center">
+			<input type="submit" value='Start' class="btn btn-default">Start</input>
+		</div>
 	</div>
 	<br/>
 
-	<div align="center">
-		<input type="submit" class="btn btn-default">Start</input>
-	</div>
 	</form>
 
     </body>

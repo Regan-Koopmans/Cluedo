@@ -1,2 +1,2 @@
 numPlayers
-6
+8
