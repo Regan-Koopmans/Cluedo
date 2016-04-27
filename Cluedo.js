@@ -15,7 +15,7 @@ function playerInputs()
     for (x = 0; x < numPlayers.value; x++)
     {
         html += "<label for=player"+(x+1)+"_ID>Player " + (x+1) + " Name:</label>";
-        html += "<input class='form-control' id='player"+ (x+1) +"_ID' type='text' />";
+        html += "<input class='form-control' name='player"+ (x+1) +"_ID' type='text' />";
         html += "<br/>";
         html += "<select class='form-control' name='character'>";
 
