@@ -98,7 +98,7 @@
             echo "<br>";
             echo "<div class='row'>";
             echo "<div align='center' class='col-xs-6' 200px style='border-radius:10px; background-color: white; border: 1px solid black; height: 200px'>";
-            echo "<u><h4>Cards</h4></u> <br><br>";
+            echo "<u><h4>Cards</h4></u> <br>";
             echo "<div class='row' style='padding: 5px;'>";
             for ($x = 0; $x < 15; $x++) {
                 echo " <div class='col-xs-1' style=' color: white; border-radius: 10%; width: 60px;'><button class='btn btn-info'><b>Card</b></button></div> ";
@@ -106,7 +106,7 @@
             echo "</div>";
             echo "</div>";
             echo "<div align='center' class='col-xs-6' style='background-color: white; border-radius:10px; border: 1px solid black; height: 200px'>";
-            echo "<u><h4>Dice</h4></u> <br><br>";
+            echo "<u><h4>Dice</h4></u> <br>";
             echo "<div class='row' style='padding: 10px'>";
 
             echo "<div id='die1' class='col-xs-6' style='border-radius:10px; background-color: lightblue;;'>#</div>";

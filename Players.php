@@ -13,6 +13,8 @@
     <p style="font-size:20px" id="subheading">The <span style="color:#ffff00">Classic</span> Mystery Game<p>
 </div>
 
+
+
 <div class="btn-group">
     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Go <span class="caret"></span>
@@ -22,9 +24,9 @@
         <li style='float : right'><a href="Accusation.php">Make Accusation <span class='glyphicon glyphicon-user'></span></a></li>
     </ul>
 </div>
-<div class="row">
-    -
-</div>
+
+<br><br>
+
 <div class="container" style="background-color: white; border-radius: 10px">
     <table class="table table-striped table-hover">
         <thead>
@@ -33,6 +35,7 @@
                 <th>Character</th>
             </tr>
         </thead>
+
 <?php
 
 
@@ -51,6 +54,7 @@ foreach ($pairs as $element)
 }
 
 ?>
-    </div>
-</table>
+    
+    </table>
+</div>
 </html>
