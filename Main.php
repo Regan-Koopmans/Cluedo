@@ -29,8 +29,8 @@
     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Go <span class="caret"></span>
     </button>
-    <ul class="dropdown-menu">
-        <li><a href="Players.php">View Players</a></li>
+    <ul class="dropdown-menu" >
+        <li style='float : right'><a href="Players.php">View Players <span class='glyphicon glyphicon-pawn'></span></a></li>
 
 <?php
     $weapons = ["Dagger","Rope","Revolver","Knife","Lead Pipe","Wrench","Candlestick","Horseshoe","Bat","Poison","Axe","Dumbbell","Trophy"];
@@ -38,14 +38,13 @@
     $places = ["Library","IT Building", "Aula","Music Building","Maths Building","Biology Building","EMS Building","Tribecca"];
 
     $player_one = [5,6,"green",true];
-    $player_two = [4,4];
-    $player_three = [3,3];
-    $player_four = [2,2];
+
+    $current = 0;
 
     $playing = $player_one[2];
 
     if ($playing)
-        echo "<li><a href='Accusation.php'>Make Accusation</a></li>";
+        echo "<li style='float : right'><a href='Accusation.php'>Make Accusation <span class='glyphicon glyphicon-user'></span></a></li>";
 
     echo "</ul>";
     echo "</div>";
@@ -56,7 +55,7 @@
 
 
     echo "<br><br>";
-    echo "<div class='container' align='center'>";
+    echo "<div class='container' align='center' style='border: 5px outset #996600'>";
     for ($x = 0; $x < 20; $x++) {
         echo "<div class='row' >";
         for ($y = 0; $y < 12; $y++) {
@@ -90,7 +89,7 @@
     }
     echo "</div>";
     echo "<br>/";
-    echo "<div class='container'>";
+    echo "<div class='container' >";
 
         if ($playing) {
 
@@ -127,13 +126,14 @@
                     echo "<div class='modal-content' style='background-color:white'>";
                         echo "<div class='modal-header'>";
                             echo "<h1>Movement</h1>";
+                            echo "<h6>For player " . $pairs[0][$current] . "</h6>";
                         echo "</div>";
                         echo "<div class='modal-body'>";
                             echo "<h5>Please enter the movement you wish to make: </h5>";
                             echo "<form>";
-                                echo "<label style='color:black' for='change_x'>Change in X:  </label>";
+                                echo "<label style='color:black' for='change_x'>Change in X: &nbsp;</label>";
                                 echo "<input onblur='checkMovement()' onclick='checkMovement()' id='change_x' type='number'><br>";
-                                echo "<label style='color:black' for='change_y'>Change in Y:  </label>";
+                                echo "<label style='color:black' for='change_y'>Change in Y: &nbsp; </label>";
                                 echo "<input onblur='checkMovement()' onclick='checkMovement()' id='change_y' type='number'><br><br>";
                                 
                                 echo "<div id='message'>";
@@ -188,7 +188,7 @@
                 echo "<br>";
 
                     echo "<div style='color:white'>_</div>";
-                        echo "<button type='submit' onclick='accuse()' class='btn btn-danger'>Accuse!<span class='glyphicon glyphicon-user'></span> </button>";
+                        echo "<button type='submit' onclick='accuse()' class='btn btn-danger'>Accuse! <span class='glyphicon glyphicon-user'></span> </button>";
                         echo "</form>";
                     echo "</div>";
             echo "<div align='center' class='col-xs-6' style='border-radius: 20px; background-color: white; border: 1px solid black;'>";
@@ -197,7 +197,7 @@
                 echo "<br>";
                 echo "<button class='btn btn-primary' onclick='changeTurn()'>End Turn  <span class='glyphicon glyphicon-fast-forward'></span></button>";
                 echo "<br><br>";
-                echo "<p style='color:black'>Playing next: ". $pairs[0][2] ."</p>";
+                echo "<p style='color:black'>Playing next: ". $pairs[0][$current+2] ."</p>";
 
             echo "</div>";
 
@@ -212,4 +212,8 @@ else {
     echo "<meta http-equiv='refresh' content='5;Main.php'>";
 }
 ?>
+<hr>
+<div align='center'>
+    <img height='200px' src='scroll2.png'>
+</div>
 </html>

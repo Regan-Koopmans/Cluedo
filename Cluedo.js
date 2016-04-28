@@ -20,6 +20,11 @@ function accuse()
     alert("accusation");
 }
 
+function changeTurn()
+{
+
+}
+
 function checkMovement()
 {
     var die1 = document.getElementById("die1");
@@ -34,12 +39,14 @@ function checkMovement()
         document.getElementById("change_x").style = "background-color:lightcoral";
         document.getElementById("change_y").style = "background-color:lightcoral";
         document.getElementById("message").innerHTML = "This exceeds your maximum moves of " + maxMoves + ".";
+        document.getElementById("submit_button").type = "button";
     }
     else
     {
         document.getElementById("change_x").style = "";
         document.getElementById("change_y").style = "";  
         document.getElementById("message").innerHTML = ""; 
+        document.getElementById("submit_button").type = "Submit";
     }
 }
 
@@ -63,7 +70,7 @@ function playerInputs()
         }
         html += "</select><br>";
     }
-    html += "<div align='center'> <input type='submit' id='submit-button' value='Start' class='btn btn-default'>Start</input> </div>";
+    html += "<div align='center'> <input type='submit' id='submit-button' value='Start' class='btn btn-default'> </div>";
     document.getElementById("players_login").innerHTML = html;
     checkCharacters();
 }

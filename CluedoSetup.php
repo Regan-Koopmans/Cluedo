@@ -24,7 +24,7 @@
 	<br/>
 
 	<div align="center">
-		<label>Number of Players : </label> <input id='numPlayers' type='number' min="1" max="6" value="1" onclick="playerInputs()" onblur="playerInputs()">
+		<label>Number of Players : </label> <input id='numPlayers' type='number' min="3" max="6" value="3" onclick="playerInputs()" onblur="playerInputs()">
 	</div>
 
 	<form action="Main.php" method="post">
@@ -46,10 +46,15 @@
 		</select>
 		<br>
 		<div align="center">
-			<input type="submit" value='Start' id='submit-button' class="btn btn-default">Start</input>
+			<input type="submit" value='Start' id='submit-button' class="btn btn-default">
 		</div>
 	</div>
 	<br/>
 	</form>
     </body>
+
+	<div align='center'>
+    	<img height='200px' src='scroll2.png'>
+	</div>
+
 </html>

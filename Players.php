@@ -18,8 +18,8 @@
         Go <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-        <li><a href="Main.php">Back to Game</a></li>
-        <li><a href="Accusation.php">Make Accusation</a></li>
+        <li style='float : right'><a href="Main.php">Back to Game <span class='glyphicon glyphicon-th'></span></a></li>
+        <li style='float : right'><a href="Accusation.php">Make Accusation <span class='glyphicon glyphicon-user'></span></a></li>
     </ul>
 </div>
 <div class="row">

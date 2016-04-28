@@ -20,8 +20,8 @@
         Go <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-        <li><a href="Main.php">Return to Game</a></li>
-        <li><a href="Players.php">View Players</a></li>
+        <li style='float:right'><a href="Main.php">Return to Game <span class='glyphicon glyphicon-th'></span> </a></li>
+        <li style='float:right'><a href="Players.php">View Players <span class='glyphicon glyphicon-pawn'></span> </a></li>
     </ul>
 </div>
 <?php
