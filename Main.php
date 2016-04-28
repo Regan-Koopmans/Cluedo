@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Damion" />
 </head>
 <div class="page-header">
-    <h1 style="font-size:100px" id="heading">CL<span style="color:red">U</span>EDO</h1>
+    <h1 style="font-size:100px" id="heading">CL<span style="color:red">U</span>EDO </h1>
     <p style="font-size:20px" id="subheading">The <span style="color:#ffff00">Classic</span> Mystery Game<p>
 </div>
 
@@ -55,7 +55,7 @@
 
 
     echo "<br><br>";
-    echo "<div class='container' align='center' style='border: 5px outset #996600'>";
+    echo "<div class='container' align='center' style='border: 5px outset #663300'>";
     for ($x = 0; $x < 20; $x++) {
         echo "<div class='row' >";
         for ($y = 0; $y < 12; $y++) {
@@ -101,15 +101,15 @@
             echo "<u><h4>Cards</h4></u> <br><br>";
             echo "<div class='row' style='padding: 5px;'>";
             for ($x = 0; $x < 15; $x++) {
-                echo " <div class='col-xs-1' style='background-color: gold; color: white; border-radius: 10%; width: 60px; padding: 5px'><b>Card</b></div> ";
+                echo " <div class='col-xs-1' style=' color: white; border-radius: 10%; width: 60px;'><button class='btn btn-info'><b>Card</b></button></div> ";
             }
             echo "</div>";
             echo "</div>";
             echo "<div align='center' class='col-xs-6' style='background-color: white; border-radius:10px; border: 1px solid black; height: 200px'>";
             echo "<u><h4>Dice</h4></u> <br><br>";
-            echo "<div class='row'>";
+            echo "<div class='row' style='padding: 10px'>";
 
-            echo "<div id='die1' class='col-xs-6' style='border-radius:10px; background-color: lightblue'>#</div>";
+            echo "<div id='die1' class='col-xs-6' style='border-radius:10px; background-color: lightblue;;'>#</div>";
             echo "<div id='die2' class='col-xs-6' style='border-radius:10px; background-color: lightblue'>#</div>";
             echo "<div style='color:white'>_</div>";
             echo "</div>";
@@ -157,7 +157,7 @@
             echo "<div align='center' class='col-xs-12'>-</div>";
             echo "</div>";
             echo "<div class='row'>";
-                echo "<div align='center' class='col-xs-6' style='border-radius: 20px; background-color: white; border: 1px solid black;'>";
+                echo "<div align='center' class='col-xs-6' style='border-radius: 20px; background-color: white; border: 1px solid black; height: 300px;'>";
                 echo "<u><h4>Accusations</h4></u>";
                 echo "<form>";
                 echo "<br>";
@@ -191,7 +191,7 @@
                         echo "<button type='submit' onclick='accuse()' class='btn btn-danger'>Accuse! <span class='glyphicon glyphicon-user'></span> </button>";
                         echo "</form>";
                     echo "</div>";
-            echo "<div align='center' class='col-xs-6' style='border-radius: 20px; background-color: white; border: 1px solid black;'>";
+                echo "<div align='center' class='col-xs-6' style='border-radius: 20px; background-color: white; border: 1px solid black; height : 300px;'>";
 
                 echo "<u><h4>Turns</h4></u>";
                 echo "<br>";

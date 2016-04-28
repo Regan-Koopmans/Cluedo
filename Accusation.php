@@ -69,7 +69,7 @@ foreach ($weapons as $weapon)
 echo "</select>";
 echo "<br>";
 echo "<div style='color:white'>_</div>";
-echo "<button type='submit' onclick='accuse()' class='btn btn-danger'>Accuse!</button>";
+echo "<button type='submit' onclick='accuse()' class='btn btn-danger'>Accuse!  <span class='glyphicon glyphicon-user'></span></button>";
 echo "</form>";
 echo "</div>";
 echo "</div>";
