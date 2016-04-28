@@ -2,15 +2,45 @@ function rollDice()
 {
     var die1 = document.getElementById("die1");
     var die2 = document.getElementById("die2");
-    die1.innerHTML = Math.ceil(Math.random() * 5);
-    die2.innerHTML = Math.ceil(Math.random() * 5);
+    var moveButton = document.getElementById("moveButton");
+    if (die1.innerHTML == "#")
+    {
+        die1.innerHTML = Math.ceil(Math.random() * 5);
+    }
+
+    if (die2.innerHTML == "#")
+    {
+        die2.innerHTML = Math.ceil(Math.random() * 5);
+    }
+    moveButton.innerHTML = "<button data-toggle='modal' data-target='#moveModal' class='btn btn-success'>Move</button>";
 }
 
 function accuse()
 {
     alert("accusation");
+}
 
-    
+function checkMovement()
+{
+    var die1 = document.getElementById("die1");
+    var die2 = document.getElementById("die2");
+    var maxMoves = parseInt(die1.innerHTML) + parseInt(die2.innerHTML);
+
+    var change_x = document.getElementById("change_x").value;
+    var change_y = document.getElementById("change_y").value;
+
+    if (Math.abs(change_x) + Math.abs(change_y) > maxMoves)
+    {
+        document.getElementById("change_x").style = "background-color:lightcoral";
+        document.getElementById("change_y").style = "background-color:lightcoral";
+        document.getElementById("message").innerHTML = "This exceeds your maximum moves of " + maxMoves + ".";
+    }
+    else
+    {
+        document.getElementById("change_x").style = "";
+        document.getElementById("change_y").style = "";  
+        document.getElementById("message").innerHTML = ""; 
+    }
 }
 
 function playerInputs()

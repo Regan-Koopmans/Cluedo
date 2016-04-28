@@ -14,8 +14,8 @@
     <title>Cluedo - The Classic Mystery Game</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-    <script src="http://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-2.2.3.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js" crossorigin="anonymous"></script>
     <script src="Cluedo.js"></script>
     <link rel="stylesheet" href="Cluedo.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Damion" />
@@ -116,6 +116,41 @@
             echo "</div>";
 
             echo "<button onclick='rollDice()' class='btn btn-default'>Roll Dice</button>";
+            echo "<br>";
+            echo "<div id='moveButton'></div>";
+
+
+            //Modal 
+            echo "<div id='moveModal' class='modal fade' role='dialog'>";
+                echo "<div class='modal-dialog'>";
+                
+                    echo "<div class='modal-content' style='background-color:white'>";
+                        echo "<div class='modal-header'>";
+                            echo "<h1>Movement</h1>";
+                        echo "</div>";
+                        echo "<div class='modal-body'>";
+                            echo "<h5>Please enter the movement you wish to make: </h5>";
+                            echo "<form>";
+                                echo "<label style='color:black' for='change_x'>Change in X:  </label>";
+                                echo "<input onblur='checkMovement()' onclick='checkMovement()' id='change_x' type='number'><br>";
+                                echo "<label style='color:black' for='change_y'>Change in Y:  </label>";
+                                echo "<input onblur='checkMovement()' onclick='checkMovement()' id='change_y' type='number'><br><br>";
+                                
+                                echo "<div id='message'>";
+
+                                echo "</div>";
+                                echo "<br>";
+
+                                echo "<input id='submit_button' type='submit' onclick='checkMovement()' value='Move'>";
+                            echo "</form>";
+                        echo "</div>";
+                        echo "<div class='modal-footer'>";
+                        echo "</div>";
+                    echo "</div>";
+                echo "</div>";
+            echo "</div>";
+
+            //
 
             echo "</div>";
             echo "<div class='row'>";
