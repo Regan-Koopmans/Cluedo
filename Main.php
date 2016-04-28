@@ -9,7 +9,6 @@
         file_put_contents("gameBuffer.txt", $file_contents);
         $_SESSION['playing'] = true;
     }
-
 ?>
 <head>
     <title>Cluedo - The Classic Mystery Game</title>
@@ -56,7 +55,7 @@
 
 
 
-    echo "<br>";
+    echo "<br><br>";
     echo "<div class='container' align='center'>";
     for ($x = 0; $x < 20; $x++) {
         echo "<div class='row' >";
@@ -123,40 +122,52 @@
             echo "<div align='center' class='col-xs-12'>-</div>";
             echo "</div>";
             echo "<div class='row'>";
-            echo "<div align='center' class='col-xs-6' style='border-radius: 20px; background-color: white; border: 1px solid black;'>";
-            echo "<u><h4>Accusations</h4></u>";
-            echo "<form>";
-            echo "<br>";
+                echo "<div align='center' class='col-xs-6' style='border-radius: 20px; background-color: white; border: 1px solid black;'>";
+                echo "<u><h4>Accusations</h4></u>";
+                echo "<form>";
+                echo "<br>";
 
-            echo "<select class='form-control'>";
-            foreach ($characters as $character) {
-                echo "<option>";
-                echo $character;
-                echo "</option>";
-            }
-            echo "</select>";
-            echo "<br>";
-            echo "<select class='form-control'>";
-            foreach ($places as $place) {
-                echo "<option>";
-                echo $place;
-                echo "</option>";
-            }
-            echo "</select>";
-            echo "<br>";
-            echo "<select class='form-control'>";
-            foreach ($weapons as $weapon) {
-                echo "<option>";
-                echo $weapon;
-                echo "</option>";
-            }
-            echo "</select>";
-            echo "<br>";
-            echo "<div style='color:white'>_</div>";
-            echo "<button type='submit' onclick='accuse()' class='btn btn-danger'>Accuse!</button>";
-            echo "</form>";
+                echo "<select class='form-control'>";
+                foreach ($characters as $character) {
+                    echo "<option>";
+                    echo $character;
+                    echo "</option>";
+                }
+                echo "</select>";
+                echo "<br>";
+                echo "<select class='form-control'>";
+                foreach ($places as $place) {
+                    echo "<option>";
+                    echo $place;
+                    echo "</option>";
+                }
+                echo "</select>";
+                echo "<br>";
+                echo "<select class='form-control'>";
+                foreach ($weapons as $weapon) {
+                    echo "<option>";
+                    echo $weapon;
+                    echo "</option>";
+                }
+                echo "</select>";
+                echo "<br>";
+
+                    echo "<div style='color:white'>_</div>";
+                        echo "<button type='submit' onclick='accuse()' class='btn btn-danger'>Accuse!<span class='glyphicon glyphicon-user'></span> </button>";
+                        echo "</form>";
+                    echo "</div>";
+            echo "<div align='center' class='col-xs-6' style='border-radius: 20px; background-color: white; border: 1px solid black;'>";
+
+                echo "<u><h4>Turns</h4></u>";
+                echo "<br>";
+                echo "<button class='btn btn-primary' onclick='changeTurn()'>End Turn  <span class='glyphicon glyphicon-fast-forward'></span></button>";
+                echo "<br><br>";
+                echo "<p style='color:black'>Playing next: ". $pairs[0][2] ."</p>";
+
             echo "</div>";
+
             echo "</div>";
+
             echo "</div>";
             echo "</div>";
             echo "<br>";

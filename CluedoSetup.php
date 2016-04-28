@@ -44,7 +44,6 @@
 			}
 			?>
 		</select>
-
 		<br>
 		<div align="center">
 			<input type="submit" value='Start' id='submit-button' class="btn btn-default">Start</input>
