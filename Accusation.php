@@ -1,7 +1,4 @@
-<?php
-    session_start();
-?>
-
+<?php session_start(); ?>
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -27,7 +24,6 @@
         <li><a href="Players.php">View Players</a></li>
     </ul>
 </div>
-
 <?php
 
 $weapons = ["Dagger","Rope","Revolver","Knife","Lead Pipe","Wrench","Candlestick","Horseshoe","Bat","Poison","Axe","Dumbell","Trophy"];
@@ -35,10 +31,9 @@ $characters = ["Miss Scarlet","Colonel Mustard","Mrs. White","Mr. Green","Mrs Pe
 $places = ["Library","IT Building", "Aula","Music Building","Maths Building","Biology Building","EMS Building","Tribecca"];
 
 echo "<div class='row'>-</div>";
-
 echo "<div class='container'";
 echo "<div class='row'>";
-echo "<div align='center' class='col-xs-12' 200px style='border-radius: 20px; background-color: white; border: 1px solid black;'>";
+echo "<div align='center' class='col-xs-12' style='border-radius: 20px; background-color: white; border: 1px solid black;'>";
 echo "<u><b><h3>Accusations</h3></b></u>";
 echo "<form>";
 echo "<br>";
@@ -62,7 +57,6 @@ foreach ($places as $place)
     echo "</option>";
 }
 echo "</select>";
-
 echo "<br>";
 
 echo "<select class='form-control'>";
@@ -73,12 +67,10 @@ foreach ($weapons as $weapon)
     echo "</option>";
 }
 echo "</select>";
-
 echo "<br>";
 echo "<div style='color:white'>_</div>";
-echo "<button type='submit' class='btn btn-danger'>Accuse!</button>";
+echo "<button type='submit' onclick='accuse()' class='btn btn-danger'>Accuse!</button>";
 echo "</form>";
 echo "</div>";
 echo "</div>";
-
 ?>

@@ -36,14 +36,18 @@
 <?php
 
 
-$players = ["regan" => "mustard","tester" => "mrs white", "hi" => "lol"];
-
-foreach ($players as $player => $character)
+$lines = file("gameBuffer.txt",FILE_IGNORE_NEW_LINES);
+$pairs = array($lines,2);
+foreach ($pairs as $element)
 {
-    echo "<tr>";
-        echo "<td>" . $player . "</td>";
-        echo "<td>" . $character . "</td>";
-    echo "</tr>";
+    for ($x = 0; $x < sizeof($element); $x++)
+    {
+        echo "<tr>";
+        echo "<td>" . $element[$x] . "</td>";
+        echo "<td>" . $element[$x+1] . "</td>";
+        echo "</tr>";
+        $x=$x+1;
+    }
 }
 
 ?>

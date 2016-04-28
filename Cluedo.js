@@ -6,9 +6,15 @@ function rollDice()
     die2.innerHTML = Math.ceil(Math.random() * 5);
 }
 
+function accuse()
+{
+    alert("accusation");
+
+    
+}
+
 function playerInputs()
 {
-
     var characters = ["Miss Scarlet","Colonel Mustard","Mrs. White","Mr. Green","Mrs Peacock","Professor Plum"];
     var numPlayers = document.getElementById("numPlayers");
     var html = "";
@@ -17,7 +23,7 @@ function playerInputs()
         html += "<label for=player"+(x+1)+"_ID>Player " + (x+1) + " Name:</label>";
         html += "<input class='form-control' name='player"+ (x+1) +"_ID' type='text' />";
         html += "<br/>";
-        html += "<select class='form-control character-select' onclick='checkCharacters()' onblur='checkCharacters()' name='character'>";
+        html += "<select class='form-control character-select' onclick='checkCharacters()' onblur='checkCharacters()' name='character"+(x+1)+"'>";
 
         for (y = 0; y < characters.length; y++)
         {

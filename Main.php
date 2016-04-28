@@ -1,16 +1,15 @@
 <?php session_start(); ?>
-
 <html>
 <?php
-        $lines = file("gameBuffer.txt",FILE_IGNORE_NEW_LINES);
-        $pairs = array($lines,2);
-        if (!isset($_SESSION['playing'])) {
-            echo "<p>First time user!</p>";
-            foreach ($pairs as $array) {
-                file_put_contents("gameBuffer.txt", $pairs[0][0] . "\n" . $pairs[0][1]++);
-            }
+    if (!isset($_SESSION['playing'])) {
+        $file_contents = "";
+        foreach ($_POST as $key => $value) {
+            $file_contents .= $value . "\n";
         }
-    $_SESSION['playing'] = "1";
+        file_put_contents("gameBuffer.txt", $file_contents);
+        $_SESSION['playing'] = true;
+    }
+
 ?>
 <head>
     <title>Cluedo - The Classic Mystery Game</title>
@@ -55,8 +54,7 @@
     $lines = file("gameBuffer.txt",FILE_IGNORE_NEW_LINES);
     $pairs = array($lines,2);
 
-    if ($pairs[0][1] < 3)
-        echo "<p>Wating for other players (Currently " . ($pairs[0][1]) . ")</p>";
+
 
     echo "<br>";
     echo "<div class='container' align='center'>";
@@ -97,7 +95,7 @@
 
         if ($playing) {
 
-            echo "<div align='center' class='row' style='background-color: lightgreen; border-radius: 5px'> You are playing ";
+            echo "<div align='center' class='row' style='background-color: lightgreen; border-radius: 5px'>". $pairs[0][0] ." is playing ";
             echo "</div>";
             echo "<br>";
             echo "<div class='row'>";
@@ -125,7 +123,7 @@
             echo "<div align='center' class='col-xs-12'>-</div>";
             echo "</div>";
             echo "<div class='row'>";
-            echo "<div align='center' class='col-xs-6' 200px style='border-radius: 20px; background-color: white; border: 1px solid black;'>";
+            echo "<div align='center' class='col-xs-6' style='border-radius: 20px; background-color: white; border: 1px solid black;'>";
             echo "<u><h4>Accusations</h4></u>";
             echo "<form>";
             echo "<br>";
@@ -155,7 +153,7 @@
             echo "</select>";
             echo "<br>";
             echo "<div style='color:white'>_</div>";
-            echo "<button type='submit' class='btn btn-danger'>Accuse!</button>";
+            echo "<button type='submit' onclick='accuse()' class='btn btn-danger'>Accuse!</button>";
             echo "</form>";
             echo "</div>";
             echo "</div>";

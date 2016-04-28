@@ -3,7 +3,6 @@
 	session_start();
 	$_SESSION['playing'] = null;
 ?>
-
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -18,7 +17,7 @@
 
 	<div class="page-header">
 		<h1 style="font-size:100px" id="heading">CL<span style="color:red">U</span>EDO</h1>
-		<p style="font-size:20px" id="subheading">The <span style="color:yellow">Classic</span> Mysery Game<p>
+		<p style="font-size:20px" id="subheading">The <span style="color:yellow">Classic</span> Mystery Game<p>
 	</div>
 
 	<h1 id="heading">SET<span style="color:red">U</span>P</h1>
@@ -37,10 +36,9 @@
 		<select class="form-control" name="character">
 			<?php
 			$characters = ["Miss Scarlet","Colonel Mustard","Mrs. White","Mr. Green","Mrs Peacock","Professor Plum"];
-
 			foreach ($characters as $character)
 			{
-			echo "<option>";
+				echo "<option>";
 				echo $character;
 				echo "</option>";
 			}
@@ -53,8 +51,6 @@
 		</div>
 	</div>
 	<br/>
-
 	</form>
-
     </body>
 </html>

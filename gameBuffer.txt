@@ -1,2 +1,4 @@
-numPlayers
-19
+Regan
+Miss Scarlet
+Other_Person
+Colonel Mustard
