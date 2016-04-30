@@ -3,8 +3,8 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" crossorigin="anonymous">
-    <script src="http://code.jquery.com/jquery-2.2.3.js"  crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js"  crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-2.2.3.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js" crossorigin="anonymous"></script>
     <script src="Cluedo.js"></script>
     <link rel="stylesheet" href="Cluedo.css">
 </head>
@@ -35,10 +35,10 @@ echo "<div class='container'";
 echo "<div class='row'>";
 echo "<div align='center' class='col-xs-12' style='border-radius: 20px; background-color: white; border: 1px solid black;'>";
 echo "<u><b><h3>Accusations</h3></b></u>";
-echo "<form>";
+echo "<form action='Refutation.php' method='post'>";
 echo "<br>";
 
-echo "<select class='form-control'>";
+echo "<select class='form-control' name='character'>";
 foreach ($characters as $character)
 {
     echo "<option>";
@@ -49,7 +49,7 @@ echo "</select>";
 
 echo "<br>";
 
-echo "<select class='form-control'>";
+echo "<select class='form-control' name='place'>";
 foreach ($places as $place)
 {
     echo "<option>";
@@ -59,7 +59,7 @@ foreach ($places as $place)
 echo "</select>";
 echo "<br>";
 
-echo "<select class='form-control'>";
+echo "<select class='form-control' name='weapon'>";
 foreach ($weapons as $weapon)
 {
     echo "<option>";
@@ -69,7 +69,7 @@ foreach ($weapons as $weapon)
 echo "</select>";
 echo "<br>";
 echo "<div style='color:white'>_</div>";
-echo "<button type='submit' onclick='accuse()' class='btn btn-danger'>Accuse!  <span class='glyphicon glyphicon-user'></span></button>";
+echo "<button type='submit' class='btn btn-danger'>Accuse!  <span class='glyphicon glyphicon-user'></span></button>";
 echo "</form>";
 echo "</div>";
 echo "</div>";

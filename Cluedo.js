@@ -20,11 +20,6 @@ function accuse()
     alert("accusation");
 }
 
-function changeTurn()
-{
-
-}
-
 function checkMovement()
 {
     var die1 = document.getElementById("die1");
@@ -44,8 +39,8 @@ function checkMovement()
     else
     {
         document.getElementById("change_x").style = "";
-        document.getElementById("change_y").style = "";  
-        document.getElementById("message").innerHTML = ""; 
+        document.getElementById("change_y").style = "";
+        document.getElementById("message").innerHTML = "";
         document.getElementById("submit_button").type = "Submit";
     }
 }

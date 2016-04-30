@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start();?>
 <html>
 <?php
     if (!isset($_SESSION['playing'])) {
@@ -8,6 +8,8 @@
         }
         file_put_contents("gameBuffer.txt", $file_contents);
         $_SESSION['playing'] = true;
+        echo "<script>alert('" . $_POST['player1_ID'] . "')</script>";
+        $_SESSION['current_player'] = $_POST['player1_ID'];
     }
 ?>
 <head>
@@ -17,6 +19,16 @@
     <script src="http://code.jquery.com/jquery-2.2.3.js" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js" crossorigin="anonymous"></script>
     <script src="Cluedo.js"></script>
+
+
+    <script>
+      function changeTurn()
+      {
+        $.get("changeTurn.php?nextPlayer=" + "<?php $_SESSION['current_player']+2 ?>");
+        location.reload(true);
+      }
+    </script>
+
     <link rel="stylesheet" href="Cluedo.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Damion" />
 </head>
@@ -93,7 +105,7 @@
 
         if ($playing) {
 
-            echo "<div align='center' class='row' style='background-color: lightgreen; border-radius: 5px'>". $pairs[0][0] ." is playing ";
+            echo "<div align='center' class='row' style='background-color: lightgreen; border-radius: 5px'>". $_SESSION['current_player'] ." is playing ";
             echo "</div>";
             echo "<br>";
             echo "<div class='row'>";
@@ -119,10 +131,10 @@
             echo "<div id='moveButton'></div>";
 
 
-            //Modal 
+            //Modal
             echo "<div id='moveModal' class='modal fade' role='dialog'>";
                 echo "<div class='modal-dialog'>";
-                
+
                     echo "<div class='modal-content' style='background-color:white'>";
                         echo "<div class='modal-header'>";
                             echo "<h1>Movement</h1>";
@@ -135,7 +147,7 @@
                                 echo "<input onblur='checkMovement()' onclick='checkMovement()' id='change_x' type='number'><br>";
                                 echo "<label style='color:black' for='change_y'>Change in Y: &nbsp; </label>";
                                 echo "<input onblur='checkMovement()' onclick='checkMovement()' id='change_y' type='number'><br><br>";
-                                
+
                                 echo "<div id='message'>";
 
                                 echo "</div>";
@@ -159,10 +171,10 @@
             echo "<div class='row'>";
                 echo "<div align='center' class='col-xs-6' style='border-radius: 20px; background-color: white; border: 1px solid black; height: 300px;'>";
                 echo "<u><h4>Accusations</h4></u>";
-                echo "<form>";
+                echo "<form action='Refutation.php' method='post'>";
                 echo "<br>";
 
-                echo "<select class='form-control'>";
+                echo "<select class='form-control' name='character'>";
                 foreach ($characters as $character) {
                     echo "<option>";
                     echo $character;
@@ -170,7 +182,7 @@
                 }
                 echo "</select>";
                 echo "<br>";
-                echo "<select class='form-control'>";
+                echo "<select class='form-control' name='place'>";
                 foreach ($places as $place) {
                     echo "<option>";
                     echo $place;
@@ -178,7 +190,7 @@
                 }
                 echo "</select>";
                 echo "<br>";
-                echo "<select class='form-control'>";
+                echo "<select class='form-control' name='weapon'>";
                 foreach ($weapons as $weapon) {
                     echo "<option>";
                     echo $weapon;
