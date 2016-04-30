@@ -1,6 +1,7 @@
-<?php session_start();?>
+<?php session_start(); ?>
 <html>
 <?php
+    player_join($_POST['player_ID'], $_POST['character']);
     if (!isset($_SESSION['playing'])) {
         $file_contents = "";
         foreach ($_POST as $key => $value) {
@@ -8,8 +9,6 @@
         }
         file_put_contents("gameBuffer.txt", $file_contents);
         $_SESSION['playing'] = true;
-        echo "<script>alert('" . $_POST['player1_ID'] . "')</script>";
-        $_SESSION['current_player'] = $_POST['player1_ID'];
     }
 ?>
 <head>
@@ -19,16 +18,6 @@
     <script src="http://code.jquery.com/jquery-2.2.3.js" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js" crossorigin="anonymous"></script>
     <script src="Cluedo.js"></script>
-
-
-    <script>
-      function changeTurn()
-      {
-        $.get("changeTurn.php?nextPlayer=" + "<?php $_SESSION['current_player']+2 ?>");
-        location.reload(true);
-      }
-    </script>
-
     <link rel="stylesheet" href="Cluedo.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Damion" />
 </head>
@@ -45,6 +34,7 @@
         <li style='float : right'><a href="Players.php">View Players <span class='glyphicon glyphicon-pawn'></span></a></li>
 
 <?php
+
     $weapons = ["Dagger","Rope","Revolver","Knife","Lead Pipe","Wrench","Candlestick","Horseshoe","Bat","Poison","Axe","Dumbbell","Trophy"];
     $characters = ["Miss Scarlet","Colonel Mustard","Mrs. White","Mr. Green","Mrs Peacock","Professor Plum"];
     $places = ["Library","IT Building", "Aula","Music Building","Maths Building","Biology Building","EMS Building","Tribecca"];
@@ -105,7 +95,7 @@
 
         if ($playing) {
 
-            echo "<div align='center' class='row' style='background-color: lightgreen; border-radius: 5px'>". $_SESSION['current_player'] ." is playing ";
+            echo "<div align='center' class='row' style='background-color: lightgreen; border-radius: 5px'>". $pairs[0][0] ." is playing ";
             echo "</div>";
             echo "<br>";
             echo "<div class='row'>";
@@ -131,10 +121,10 @@
             echo "<div id='moveButton'></div>";
 
 
-            //Modal
+            //Modal 
             echo "<div id='moveModal' class='modal fade' role='dialog'>";
                 echo "<div class='modal-dialog'>";
-
+                
                     echo "<div class='modal-content' style='background-color:white'>";
                         echo "<div class='modal-header'>";
                             echo "<h1>Movement</h1>";
@@ -147,7 +137,7 @@
                                 echo "<input onblur='checkMovement()' onclick='checkMovement()' id='change_x' type='number'><br>";
                                 echo "<label style='color:black' for='change_y'>Change in Y: &nbsp; </label>";
                                 echo "<input onblur='checkMovement()' onclick='checkMovement()' id='change_y' type='number'><br><br>";
-
+                                
                                 echo "<div id='message'>";
 
                                 echo "</div>";
@@ -171,10 +161,10 @@
             echo "<div class='row'>";
                 echo "<div align='center' class='col-xs-6' style='border-radius: 20px; background-color: white; border: 1px solid black; height: 300px;'>";
                 echo "<u><h4>Accusations</h4></u>";
-                echo "<form action='Refutation.php' method='post'>";
+                echo "<form>";
                 echo "<br>";
 
-                echo "<select class='form-control' name='character'>";
+                echo "<select class='form-control'>";
                 foreach ($characters as $character) {
                     echo "<option>";
                     echo $character;
@@ -182,7 +172,7 @@
                 }
                 echo "</select>";
                 echo "<br>";
-                echo "<select class='form-control' name='place'>";
+                echo "<select class='form-control'>";
                 foreach ($places as $place) {
                     echo "<option>";
                     echo $place;
@@ -190,7 +180,7 @@
                 }
                 echo "</select>";
                 echo "<br>";
-                echo "<select class='form-control' name='weapon'>";
+                echo "<select class='form-control'>";
                 foreach ($weapons as $weapon) {
                     echo "<option>";
                     echo $weapon;
@@ -228,4 +218,40 @@ else {
 <div align='center'>
     <img height='200px' src='scroll2.png'>
 </div>
+<script>
+<?php
+function connectToDatabase() {
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    // Create connection
+    $link = new mysqli($servername, $username, $password);
+
+    mysqli_query($link, "CREATE DATABASE IF NOT EXISTS CluedoDB") or die ("Database creation unsuccessful");
+    mysqli_select_db($link, 'CluedoDB');
+
+    return $link;
+}
+function player_join($username, $character)
+{
+    $db = connectToDatabase();    
+
+
+    $s = $db->prepare("INSERT INTO Players (playerName, characterName) VALUES (?, ?)");
+    if ($s === false) {
+        die('prepare() failed: ' . htmlspecialchars($db->error));
+    }
+
+    $a = $s->bind_param("ss", $player_name, $player_character);
+    if ($a === false) {
+        die('bind_param() failed: ' . htmlspecialchars($s->error));
+    }
+
+    //Characters
+    $player_name = "Joshua"; $player_character = "Miss Scarlet";
+    $a = $s->execute();
+    $db->close();
+}
+?>
+</script>
 </html>
