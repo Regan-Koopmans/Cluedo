@@ -23,17 +23,22 @@
 	<h1 id="heading">SET<span style="color:red">U</span>P</h1>
 	<br/>
 
+
 	<div align="center">
-		<label>Number of Players : </label> <input id='numPlayers' type='number' min="3" max="6" value="3" onclick="playerInputs()" onblur="playerInputs()">
+		<label>Players : </label> <input id='numPlayers' type='number' min="1" max="1" value="1" onclick="playerInputs()" onblur="playerInputs()">
 	</div>
+	<?php
+	connectToDatabase();
+	populate_database();
+	?>
 
 	<form action="Main.php" method="post">
 	<div id='players_login' class="container">
 		<label for="player1_ID">Player Name:</label>
-		<input class="form-control" id="player_ID" type="text" />
+		<input class="form-control" name="player_ID" id="player_ID" type="text" />
 		<br/>
 
-		<select class="form-control" name="character">
+		<select class="form-control" name="character" id='character'>
 			<?php
 			$characters = ["Miss Scarlet","Colonel Mustard","Mrs. White","Mr. Green","Mrs Peacock","Professor Plum"];
 			foreach ($characters as $character)
@@ -46,7 +51,7 @@
 		</select>
 		<br>
 		<div align="center">
-			<input type="submit" value='Start' id='submit-button' class="btn btn-default">
+			<input type="submit" value='Start' onclick="playerPages()" id='submit-button' class="btn btn-default">
 		</div>
 	</div>
 	<br/>
@@ -56,4 +61,115 @@
 	<div align='center'>
     	<img height='200px' src='scroll2.png'>
 	</div>
+
+<script>
+<?php
+function connectToDatabase() {
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	// Create connection
+	$link = new mysqli($servername, $username, $password);
+
+	mysqli_query($link, "CREATE DATABASE IF NOT EXISTS CluedoDBNew") or die ("Database creation unsuccessful");
+    mysqli_select_db($link, 'CluedoDBNew');
+
+    return $link;
+}
+
+function populate_database(){
+    $db = connectToDatabase();
+
+
+	$a = mysqli_query($db,"CREATE TABLE IF NOT EXISTS Players (
+	id int(1) unsigned NOT NULL auto_increment PRIMARY KEY,
+	playerName varchar(255) NOT NULL UNIQUE,
+	characterName varchar(255) Not Null,
+	currentlyPlaying boolean DEFAULT null,
+	positionX int(2) unsigned,
+	positonY int(2) unsigned 
+	);
+	");
+	
+	if ($a === false) {
+	    die('Table Players creation failed: ' . htmlspecialchars($db->error));
+	}
+
+	$a = mysqli_query($db, "CREATE TABLE IF NOT EXISTS Cards (
+	    card_id int(11) unsigned NOT NULL auto_increment PRIMARY KEY,
+	    name varchar(255) NOT NULL UNIQUE,
+	    type varchar(255) NOT NULL,
+	    id INT(1) unsigned,
+	    FOREIGN KEY (id) REFERENCES Players(id)
+	    );
+	");
+	if ($a === false) {
+	    die('Table Cards creation failed: ' . htmlspecialchars($db->error));
+	}
+	$a = mysqli_query($db, "INSERT INTO Players (playerName, characterName) VALUES ('Kevin', 'Miss Peacock')");
+
+	$s = $db->prepare("INSERT INTO Cards (name, type) VALUES (?, ?)");
+	if ($s === false) {
+	    die('prepare() failed: ' . htmlspecialchars($db->error));
+	}
+
+	$a = $s->bind_param("ss", $card_name, $card_type);
+	if ($a === false) {
+	    die('bind_param() failed: ' . htmlspecialchars($s->error));
+	}
+
+	//Characters
+	$card_name = "Colonel Mustard"; $card_type = "Character";
+	$a = $s->execute();
+	$card_name = "Mrs White"; $card_type = "Character";
+	$a = $s->execute();
+	$card_name = "Miss Peacock"; $card_type = "Character";
+	$a = $s->execute();
+	$card_name = "Miss Scarlett"; $card_type = "Character";
+	$a = $s->execute();
+	$card_name = "Professor Plum"; $card_type = "Character";
+	$a = $s->execute();
+	$card_name = "Reverend Green"; $card_type = "Character";
+	$a = $s->execute();
+	//Weapons
+	$card_name = "Candlestick"; $card_type = "Weapon";
+	$a = $s->execute();
+	$card_name = "Icepick"; $card_type = "Weapon";
+	$a = $s->execute();
+	$card_name = "Poison"; $card_type = "Weapon";
+	$a = $s->execute();
+	$card_name = "Poker"; $card_type = "Weapon";
+	$a = $s->execute();
+	$card_name = "Revolver"; $card_type = "Weapon";
+	$a = $s->execute();
+	$card_name = "Shears"; $card_type = "Weapon";
+	$a = $s->execute();
+	//Locations
+	$card_name = "Aula"; $card_type = "Location";
+	$a = $s->execute();
+	$card_name = "Biology Labs"; $card_type = "Location";
+	$a = $s->execute();
+	$card_name = "Tribecca"; $card_type = "Location";
+	$a = $s->execute();
+	$card_name = "I.T. Building"; $card_type = "Location";
+	$a = $s->execute();
+	$card_name = "Mathematics"; $card_type = "Location";
+	$a = $s->execute();
+	$card_name = "Music"; $card_type = "Location";
+	$a = $s->execute();
+	$card_name = "Centenary"; $card_type = "Location";
+	$a = $s->execute();
+	$card_name = "Library"; $card_type = "Location";
+	$a = $s->execute();
+	$card_name = "EMS"; $card_type = "Location";
+	$a = $s->execute();
+
+	mysqli_query($db, "INSERT INTO Players (playerName, characterName) VALUES ('Kevin', 'Miss Peacock')");
+
+    
+    $db->close();
+	
+}
+?>
+</script>
 </html>
